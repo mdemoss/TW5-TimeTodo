@@ -1,0 +1,104 @@
+<style>
+  div.line-item:hover {
+    background-color: whitesmoke;
+  }
+  div.line-item {
+    display: flex;
+    align-items: flex-start;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    margin: 0.3em;
+    width: 100%;
+  }
+  input#✅ {
+    margin-left: 1em;
+    height: 1.1rem;
+    width: 1.1rem;
+  }
+  @media screen and (max-width: 400px){
+    input#✅ {
+      display: none;
+    }
+    * {
+      margin-left: 0em !important;
+      margin-right: 0em !important;
+      padding-left: 0.1em !important;
+      padding-right: 0.1em !important;
+    }
+    label .human-duration{
+      display: none;
+    }
+  }
+  input:checked + label .label-text {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+  input:checked + label .human-time,
+  input:checked + label .human-duration{
+    opacity: 0.5;
+  }
+  .line-item label{
+    display: contents;
+  }
+  .line-item label div{
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+  }
+  .line-item .label-text{
+    flex: 5 1 15em;
+    padding-right: 1em;
+    padding-left: 0.5em;
+  }
+  .line-item .human-time{
+    flex: 1 2 15em;
+    padding-right: 0.5em;
+    font-size: 0.7rem;
+    /* max-height: 4em; */
+    min-height: 1rem;
+    /* text-overflow: ellipsis; */
+    overflow: hidden;
+    align-self:center;
+  }
+  .line-item .human-duration {
+    flex: 0 2 8em;
+    padding-right: 1em;
+    font-size: 0.7rem;
+    align-self:center;
+    min-height: 1rem;
+    text-align: right
+  }
+  .js-hover-remove {
+    background-color:  rgba(255,0,0,0.25) !important;
+    opacity: 0.777;
+  }
+  button.checklist-remove {
+    height: 1.1rem;
+    width: 1.1rem;
+    border-radius: 3px;
+    background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%3E%0A%3Crect%20width%3D%225%22%20height%3D%221%22%20x%3D%223%22%20y%3D%225%22%20fill%3D%22%23444%22%2F%3E%0A%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    background-color: white /*<<colour sidebar-tab-background-selected>>*/;
+    border: 1px solid black /*<<colour sidebar-tab-background>>*/;
+    color: silver /*<<colour sidebar-muted-foreground>>*/;
+    margin-right:1em;
+  }
+  .remove-button-container {
+    padding-right:1em;
+  }
+  input#✅, button.checklist-remove{
+    margin-top: 0.45em;
+  }
+
+</style>
+
+<div class="line-item">
+  <input id="✅" type="checkbox" {{=this.isDone() ? 'checked' : ''}}>
+  <label for="✅">
+    <div class="label-text"> {{=this.textContent}} </div>
+    <div class="human-duration"> {{=this.humanRecurString()}} </div>
+    <div class="human-time"> {{=this.storedRelativeTimeString}} </div>
+  </label>
+  <button class="checklist-remove" name="delete"></button>
+</div>

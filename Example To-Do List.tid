@@ -1,0 +1,15 @@
+created: 20190825054254971
+modified: 20190825162601597
+tags:
+title: Example To-Do List
+
+! Header!
+
+<to-do recur="2mon">Trim hedges</to-do>
+<to-do recur="3s">Breathe</to-do>
+<to-do recur="1w">Change bedsheets</to-do>
+<to-do data-done="2019-07-20T17:47:24.924Z" recur="1w" times-done="14">Mow the lawn</to-do>
+<to-do data-done="2011-08-12T17:47:24.924Z" times-done="3">floss</to-do>
+<to-do>Paint master bedroom</to-do>
+
+! Header!

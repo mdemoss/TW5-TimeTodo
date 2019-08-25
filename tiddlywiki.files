@@ -1,0 +1,50 @@
+{
+	"tiddlers": [
+		{
+			"file": "./js/todoElem.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/mdemoss/TimeTodo/todoElem.js",
+				"module-type": "startup"
+			}
+		},
+		{
+			"file": "./node_modules/dot/doT.min.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/mdemoss/TimeTodo/dep/doT.min.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "./node_modules/moment/min/moment.min.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/mdemoss/TimeTodo/dep/moment.min.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "./node_modules/timestring/index.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/mdemoss/TimeTodo/dep/timestring.js",
+				"module-type": "library"
+			}
+		},
+		{
+			"file": "./html/todoElem.html",
+			"fields": {
+				"type": "text/html",
+				"title": "$:/plugins/mdemoss/TimeTodo/todoElem.html"
+			}
+		},
+		{
+			"file": "./LICENSE",
+			"fields": {
+				"type": "text/plain",
+				"title": "$:/plugins/mdemoss/TimeTodo/license"
+			}
+		}
+	]
+}
