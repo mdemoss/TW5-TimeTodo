@@ -1,11 +1,27 @@
 <style>
+  input.new-item-entry {
+    border: none;
+    border-bottom: solid 2px {{=this.twColor('sidebar-tab-background-selected')}};
+    flex: auto;
+    margin-left: 1em;
+  }
+  input:focus.new-item-entry {
+    border-bottom: solid 2px {{=this.twColor('notification-border')}};
+    outline:none;
+  }
+  form.new-entry-container {
+    display: flex;
+  }
+  div.add-icon {
+    padding-left: 1.2em;
+  }
 
 </style>
 
-<div class="new-entry-container">
-  <span></span>
-  <input type="text" placeholder="New list item">
-</div>
+<form class="new-entry-container">
+  <div class="add-icon">➕</div>
+  <input type="text" placeholder="New list item" class="new-item-entry">
+</form>
 
 <div class="todo-list-container">
   <slot></slot>

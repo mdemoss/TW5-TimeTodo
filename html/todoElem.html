@@ -1,6 +1,6 @@
 <style>
   div.line-item:hover {
-    background-color: whitesmoke;
+    background-color: {{=this.twColor('sidebar-tab-background')}};
   }
   div.line-item {
     display: flex;
@@ -79,9 +79,9 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100%;
-    background-color: white /*<<colour sidebar-tab-background-selected>>*/;
-    border: 1px solid black /*<<colour sidebar-tab-background>>*/;
-    color: silver /*<<colour sidebar-muted-foreground>>*/;
+    background-color: {{=this.twColor('sidebar-tab-background-selected')}};
+    border: 1px solid {{=this.twColor('sidebar-tab-background')}};
+    color: {{=this.twColor('sidebar-muted-foreground')}};
     margin-right:1em;
   }
   .remove-button-container {

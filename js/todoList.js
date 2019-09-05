@@ -5,7 +5,10 @@
 const doT = require("$:/plugins/mdemoss/TimeTodo/dep/doT.min.js");
 const moment = require("$:/plugins/mdemoss/TimeTodo/dep/moment.min.js");
 const timestring = require("$:/plugins/mdemoss/TimeTodo/dep/timestring.js");
-var elemTemplate = doT.template($tw.wiki.getTiddler("$:/plugins/mdemoss/TimeTodo/todoList.html").fields.text);
+
+var elemTemplate = doT.template(
+  $tw.wiki.getTiddler("$:/plugins/mdemoss/TimeTodo/todoList.html").fields.text,
+);
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Escaping
 function escapeRegExp(string) {
@@ -13,8 +16,7 @@ function escapeRegExp(string) {
 }
 
 if(typeof HTMLElement !== 'undefined'){ // skip this and maybe use x-tag later
-
-class todoElem extends HTMLElement {
+class todoList extends HTMLElement {
   constructor() {
     super();
     this.root = this.attachShadow({ mode: 'open' }); // create a Shadow DOM
@@ -41,27 +43,35 @@ class todoElem extends HTMLElement {
 
   setContent(){
     this.root.innerHTML = elemTemplate.call(this); /* I want to use 'this' in the template */
-    this.inputElement = this.root.querySelector("input[type='text']");
-    this.formElement = this.root.querySelector("form");
 
-    formElement.addEventListener("submit", ev=> this.addItem());
+    let formElement = this.root.querySelector("form");
+
+    formElement.addEventListener("submit", ev=> this.addItem(ev));
   }
 
   addItem(ev){
-    console.log("add item!");
-    return;
-
+    ev.preventDefault();
+    let inputElement = this.root.querySelector("input[type='text']");
     let oldTiddlerText = $tw.wiki.getTiddler(this.ourTiddlerTitle).fields.text;
     let oldOuterHtml = this.outerHTML;
-    this.remove();
+
+    this.innerHTML = (`\n<to-do>${inputElement.value}</to-do>`) + this.innerHTML;
+
     $tw.wiki.setText(
       this.ourTiddlerTitle, "text", null,
-      oldTiddlerText.replace(RegExp("(\\n[ \\t]*)?" + escapeRegExp(oldOuterHtml) + "([ \\t]*)?"), "")
+      oldTiddlerText.replace(oldOuterHtml, this.outerHTML)
+    );
+  }
+
+  twColor(colorName){
+    return $tw.wiki.extractTiddlerDataItem(
+      $tw.wiki.getTiddlerText("$:/palette","$:/palettes/Vanilla"),
+      colorName
     );
   }
 }
 
-customElements.define('to-do', todoElem);
+customElements.define('to-do-list', todoList);
 
 } // endif HTMLElement
 

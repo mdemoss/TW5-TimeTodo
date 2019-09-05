@@ -154,6 +154,13 @@ class todoElem extends HTMLElement {
       this.setContent();
     }
   }
+
+  twColor(colorName){
+    return $tw.wiki.extractTiddlerDataItem(
+      $tw.wiki.getTiddlerText("$:/palette","$:/palettes/Vanilla"),
+      colorName
+    );
+  }
 }
 
 customElements.define('to-do', todoElem);
