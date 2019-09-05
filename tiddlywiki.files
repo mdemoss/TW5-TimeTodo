@@ -9,6 +9,14 @@
 			}
 		},
 		{
+			"file": "./js/todoList.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/mdemoss/TimeTodo/todoList.js",
+				"module-type": "startup"
+			}
+		},
+		{
 			"file": "./node_modules/dot/doT.min.js",
 			"fields": {
 				"type": "application/javascript",
@@ -37,6 +45,13 @@
 			"fields": {
 				"type": "text/html",
 				"title": "$:/plugins/mdemoss/TimeTodo/todoElem.html"
+			}
+		},
+		{
+			"file": "./html/todoList.html",
+			"fields": {
+				"type": "text/html",
+				"title": "$:/plugins/mdemoss/TimeTodo/todoList.html"
 			}
 		},
 		{
