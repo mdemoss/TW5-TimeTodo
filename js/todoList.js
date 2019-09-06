@@ -59,7 +59,23 @@ class todoList extends HTMLElement {
     let oldTiddlerText = $tw.wiki.getTiddler(this.ourTiddlerTitle).fields.text;
     let oldOuterHtml = this.outerHTML;
 
-    this.innerHTML = (`\n<to-do added="${moment().toISOString()}">${inputElement.value}</to-do>`) + this.innerHTML;
+    let matchEveryClause = inputElement.value.match(/^(.+)( every (.+))$/);
+    try{
+      if(matchEveryClause){
+        var taskText = matchEveryClause[1];
+        var recurText = matchEveryClause[3];
+        timestring(recurText); // throw if parse fails
+      } else {
+        throw 'no match, no problem'
+      }
+    } catch(e) {
+      var taskText = inputElement.value;
+      var recurText = "";
+    }
+
+    this.innerHTML = ( // prepend new item to list
+      `\n<to-do added="${moment().toISOString()}" ${recurText ? `recur="${recurText}"` : ``}>${taskText}</to-do>`
+    ) + this.innerHTML;
 
     $tw.wiki.setText(
       this.ourTiddlerTitle, "text", null,
