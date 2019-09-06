@@ -49,6 +49,10 @@ class todoList extends HTMLElement {
     formElement.addEventListener("submit", ev=> this.addItem(ev));
   }
 
+  focus(){
+    this.root.querySelector("input[type='text']").focus();
+  }
+
   addItem(ev){
     ev.preventDefault();
     let inputElement = this.root.querySelector("input[type='text']");

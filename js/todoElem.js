@@ -31,6 +31,16 @@ class todoElem extends HTMLElement {
     this.mutationObserver = new MutationObserver(() => {
       if (this.textContent) {
         this.setContent()
+
+        // When adding new entries, the old elements are gone.
+        // To "keep" focus, check to see if this was just added.
+        if (
+          moment(this.getAttribute("added")).isSameOrAfter(moment().subtract(1, 's')) &&
+          this.parentElement.nodeName == 'TO-DO-LIST'
+        ){
+          this.parentElement.focus();
+        }
+
         this.mutationObserver.disconnect()
       }
     });
