@@ -30,18 +30,9 @@ class todoElem extends HTMLElement {
     // "there is no lifecycle hook that does guarantee child element access in Custom Elements spec v1"
     this.mutationObserver = new MutationObserver(() => {
       if (this.textContent) {
-        this.setContent()
-
-        // When adding new entries, the old elements are gone.
-        // To "keep" focus, check to see if this was just added.
-        if (
-          moment(this.getAttribute("added")).isSameOrAfter(moment().subtract(1, 's')) &&
-          this.parentElement.nodeName == 'TO-DO-LIST'
-        ){
-          this.parentElement.focus();
-        }
-
-        this.mutationObserver.disconnect()
+        this.setContent();
+        this.checkIfNewItemParentNeedsFocus();
+        this.mutationObserver.disconnect();
       }
     });
     this.mutationObserver.observe(this, {childList: true});
@@ -72,6 +63,17 @@ class todoElem extends HTMLElement {
       let lineItemDiv = this.root.querySelector("div.line-item");
       removeButton.addEventListener("mouseenter", ev=> lineItemDiv.classList.add("js-hover-remove") );
       removeButton.addEventListener("mouseleave", ev=> lineItemDiv.classList.remove("js-hover-remove"));
+    }
+  }
+
+  checkIfNewItemParentNeedsFocus(){
+    // When adding new entries, the old elements are gone.
+    // To "keep" focus, check to see if this was just added.
+    if (
+      moment(this.getAttribute("added")).isSameOrAfter(moment().subtract(1, 's')) &&
+      this.parentElement.nodeName == 'TO-DO-LIST'
+    ){
+      this.parentElement.focus();
     }
   }
 
