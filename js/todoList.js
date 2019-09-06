@@ -55,7 +55,7 @@ class todoList extends HTMLElement {
     let oldTiddlerText = $tw.wiki.getTiddler(this.ourTiddlerTitle).fields.text;
     let oldOuterHtml = this.outerHTML;
 
-    this.innerHTML = (`\n<to-do>${inputElement.value}</to-do>`) + this.innerHTML;
+    this.innerHTML = (`\n<to-do added="${moment().toISOString()}">${inputElement.value}</to-do>`) + this.innerHTML;
 
     $tw.wiki.setText(
       this.ourTiddlerTitle, "text", null,

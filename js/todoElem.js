@@ -53,7 +53,7 @@ class todoElem extends HTMLElement {
 
     let removeButton = this.root.querySelector("button.checklist-remove");
     let listLabel = this.root.querySelector(".line-item > label");
-    let dataDone = this.getAttribute("data-done");
+    let dataDone = this.getAttribute("done");
 
     this.checkboxElement.addEventListener('input', ev=> this.updateDoneStatus() );
 
@@ -70,10 +70,10 @@ class todoElem extends HTMLElement {
     let oldOuterHtml = this.outerHTML;
 
     if( this.checkboxElement.checked ){
-    	this.setAttribute("data-done", (new Date()).toISOString());
+    	this.setAttribute("done", (moment().toISOString()));
       this.setAttribute("times-done", (Number(this.getAttribute("times-done")) + 1 || 1));
     } else {
-    	this.setAttribute("data-done", '');
+    	this.setAttribute("done", '');
     }
 
     $tw.wiki.setText(
@@ -93,13 +93,13 @@ class todoElem extends HTMLElement {
   }
 
   isDone(){
-    if( !this.getAttribute('recur') && this.getAttribute('data-done') ){
+    if( !this.getAttribute('recur') && this.getAttribute('done') ){
       return true;
-    } else if( !this.getAttribute('data-done') ) {
+    } else if( !this.getAttribute('done') ) {
       return false;
     }
 
-    let whenDone = moment(this.getAttribute('data-done'));
+    let whenDone = moment(this.getAttribute('done'));
     let period = moment.duration( timestring(this.getAttribute('recur'), 'ms') );
     let nextDue = whenDone + period;
     let rightNow = moment()
@@ -115,11 +115,11 @@ class todoElem extends HTMLElement {
     {
       let timesDone = Number(this.getAttribute("times-done")) || 0;
       let timesDoneHtml = `<span class="timesDone">${timesDone > 0 ? getGetOrdinal(timesDone) + ' time' : ''}</span>`;
-      let whenDone = moment(this.getAttribute('data-done'));
+      let whenDone = moment(this.getAttribute('done'));
 
-      if( !this.getAttribute('recur') && this.getAttribute('data-done') ){
+      if( !this.getAttribute('recur') && this.getAttribute('done') ){
         return `done ${timesDone > 1 ? timesDoneHtml : ''} ${moment().to(whenDone)}`;
-      } else if( !this.getAttribute('data-done') ) {
+      } else if( !this.getAttribute('done') ) {
         return '';
       }
 
