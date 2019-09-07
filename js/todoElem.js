@@ -31,6 +31,7 @@ class todoElem extends HTMLElement {
     this.mutationObserver = new MutationObserver(() => {
       if (this.textContent) {
         this.setContent();
+        this.hideIfExpiredByParentList();
         this.checkIfNewItemParentNeedsFocus();
         this.mutationObserver.disconnect();
       }
@@ -77,6 +78,32 @@ class todoElem extends HTMLElement {
     }
   }
 
+  hideIfExpiredByParentList(){
+    if(
+      this.parentElement.nodeName == 'TO-DO-LIST' &&
+      this.parentElement.getAttribute("expires") &&
+      !this.getAttribute('recur') &&
+      this.isDone()
+    ){
+      try{
+        let expirationDuration = moment.duration( timestring(this.parentElement.getAttribute('expires'), 'ms') );
+        let whenDone = moment(this.getAttribute('done'));
+        let rightNow = moment();
+
+        if(whenDone.add(expirationDuration).isBefore(rightNow)){
+          this.root.querySelector("div.line-item").style.display = 'none';
+          clearInterval(this.intervalUpdateId); // is it ok to clear twice?
+          return;
+        }
+
+      } catch(e) {
+        null;
+      }
+    }
+    // this.root.querySelector("div.line-item").style.display = ''; // time does not reverse, recurring tasks do not expire
+    return;
+  }
+
   updateDoneStatus(ev){
     let oldTiddlerText = $tw.wiki.getTiddler(this.ourTiddlerTitle).fields.text;
     let oldOuterHtml = this.outerHTML;
@@ -114,7 +141,7 @@ class todoElem extends HTMLElement {
     let whenDone = moment(this.getAttribute('done'));
     let period = moment.duration( timestring(this.getAttribute('recur'), 'ms') );
     let nextDue = whenDone + period;
-    let rightNow = moment()
+    let rightNow = moment();
 
     if( rightNow.isBefore(nextDue) ){
       return true;
@@ -165,6 +192,7 @@ class todoElem extends HTMLElement {
     if( this.storedRelativeTimeString !== this.relativeTimeString() ){
       this.setContent();
     }
+    this.hideIfExpiredByParentList();
   }
 
   twColor(colorName){
