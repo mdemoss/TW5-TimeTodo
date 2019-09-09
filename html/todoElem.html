@@ -1,6 +1,7 @@
 <style>
   div.line-item:hover {
     background-color: {{=this.twColor('message-background')}};
+    color: {{=this.twColor('message-foreground')}};
   }
   div.line-item {
     display: flex;
@@ -68,8 +69,9 @@
     text-align: right
   }
   .js-hover-remove {
-    background-color:  rgba(255,0,0,0.25) !important;
-    opacity: 0.777;
+    background-color:  {{=this.twColor('diff-delete-background')}} !important;
+    color:  {{=this.twColor('diff-delete-foreground')}} !important;
+    /* opacity: 0.777; */
   }
   button.checklist-remove {
     height: 1.1rem;
