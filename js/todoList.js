@@ -46,11 +46,13 @@ class todoList extends HTMLElement {
 
     let formElement = this.root.querySelector("form.new-entry-container");
     let inputLine = this.root.querySelector("input[type='text']");
+    let addIcon = this.root.querySelector(".add-icon");
 
     formElement.addEventListener("submit", ev=> this.addItem(ev));
 
     inputLine.addEventListener("focus", ev=> formElement.classList.add("js-focus") );
     inputLine.addEventListener("blur", ev=> formElement.classList.remove("js-focus"));
+    addIcon.addEventListener("click", ev=> inputLine.focus());
   }
 
   focus(){
