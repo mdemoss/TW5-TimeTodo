@@ -44,9 +44,13 @@ class todoList extends HTMLElement {
   setContent(){
     this.root.innerHTML = elemTemplate.call(this); /* I want to use 'this' in the template */
 
-    let formElement = this.root.querySelector("form");
+    let formElement = this.root.querySelector("form.new-entry-container");
+    let inputLine = this.root.querySelector("input[type='text']");
 
     formElement.addEventListener("submit", ev=> this.addItem(ev));
+
+    inputLine.addEventListener("focus", ev=> formElement.classList.add("js-focus") );
+    inputLine.addEventListener("blur", ev=> formElement.classList.remove("js-focus"));
   }
 
   focus(){
