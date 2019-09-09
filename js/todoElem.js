@@ -196,10 +196,12 @@ class todoElem extends HTMLElement {
   }
 
   twColor(colorName){
-    return $tw.wiki.extractTiddlerDataItem(
-      $tw.wiki.getTiddlerText("$:/palette","$:/palettes/Vanilla"),
-      colorName
-    );
+    return $tw.wiki.renderText(
+      "text/plain",
+      "text/vnd.tiddlywiki",
+      `\\import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
+      <<colour ${colorName}>>`
+    )
   }
 }
 
