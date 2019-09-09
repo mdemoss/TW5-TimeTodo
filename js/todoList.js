@@ -88,16 +88,6 @@ class todoList extends HTMLElement {
       oldTiddlerText.replace(oldOuterHtml, this.outerHTML)
     );
   }
-
-  // TODO : D. R. Y.
-  twColor(colorName){
-    return $tw.wiki.renderText(
-      "text/plain",
-      "text/vnd.tiddlywiki",
-      `\\import [[$:/core/ui/PageMacros]] [all[shadows+tiddlers]tag[$:/tags/Macro]!has[draft.of]]
-      <<colour ${colorName}>>`
-    )
-  }
 }
 
 customElements.define('to-do-list', todoList);
