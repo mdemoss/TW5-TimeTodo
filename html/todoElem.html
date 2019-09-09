@@ -1,7 +1,7 @@
 <style>
   div.line-item:hover {
-    background-color: {{=this.twColor('message-background')}};
-    color: {{=this.twColor('message-foreground')}};
+    background-color: var(--hover-background-color);
+    color: var(--hover-foreground-color);
   }
   div.line-item {
     display: flex;
@@ -69,8 +69,8 @@
     text-align: right
   }
   .js-hover-remove {
-    background-color:  {{=this.twColor('diff-delete-background')}} !important;
-    color:  {{=this.twColor('diff-delete-foreground')}} !important;
+    background-color:  var(--delete-background-color) !important;
+    color:  var(--delete-foreground-color) !important;
     /* opacity: 0.777; */
   }
   button.checklist-remove {
@@ -81,9 +81,9 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 100%;
-    background-color: {{=this.twColor('sidebar-tab-background-selected')}};
-    border: 1px solid {{=this.twColor('sidebar-tab-background')}};
-    color: {{=this.twColor('sidebar-muted-foreground')}};
+    background-color: var(--remove-button-background-color);
+    border: 1px solid var(--remove-button-border-color);
+    color: var(--remove-button-foreground-color);
     margin-right:1em;
   }
   .remove-button-container {

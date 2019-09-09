@@ -1,0 +1,25 @@
+\define custom-color(name, color)
+<$text text="""--$name$: """ /><<colour $color$>>
+\end
+
+/*
+  The macro is necessary because tiddlywiki will munge '--'
+  Trying to be clever with inserting a comment inside the '--' didn't work.
+*/
+
+to-do {
+  <<custom-color hover-background-color message-background>>;
+  <<custom-color hover-foreground-color message-foreground>>;
+
+  <<custom-color delete-background-color diff-delete-background>>;
+  <<custom-color delete-foreground-color diff-delete-foreground>>;
+
+  <<custom-color remove-button-background-color sidebar-tab-background-selected>>;
+  <<custom-color remove-button-border-color sidebar-tab-background>>;
+  <<custom-color remove-button-foreground-color sidebar-muted-foreground>>;
+}
+
+to-do-list {
+  <<custom-color new-item-color-focus foreground>>;
+  <<custom-color new-item-color-blur muted-foreground>>;
+}

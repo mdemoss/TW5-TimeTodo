@@ -1,6 +1,13 @@
 {
 	"tiddlers": [
 		{
+			"file": "./html/todo.css",
+			"fields": {
+				"title": "$:/plugins/mdemoss/TimeTodo/todo.css",
+				"tags": "$:/tags/Stylesheet"
+			}
+		},
+		{
 			"file": "./js/todoElem.js",
 			"fields": {
 				"type": "application/javascript",

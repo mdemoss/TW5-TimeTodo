@@ -1,14 +1,14 @@
 <style>
   input.new-item-entry {
     border: none;
-    border-bottom: solid 2px {{=this.twColor('muted-foreground')}};
+    border-bottom: solid 2px var(--new-item-color-blur);
     flex: auto;
     margin-left: 0.8em;
     margin-right: 0.4em;
     background-color: transparent;
   }
   input:focus.new-item-entry {
-    border-bottom: solid 2px {{=this.twColor('foreground')}};
+    border-bottom: solid 2px var(--new-item-color-focus);
     outline:none;
   }
   form.new-entry-container {
@@ -17,10 +17,10 @@
   div.add-icon {
     padding-left: 1.2em;
     color: transparent;
-    text-shadow: 0 0 0 {{=this.twColor('muted-foreground')}};
+    text-shadow: 0 0 0 var(--new-item-color-blur);
   }
   form.js-focus div.add-icon {
-    text-shadow: 0 0 0 {{=this.twColor('foreground')}};
+    text-shadow: 0 0 0 var(--new-item-color-focus);
   }
   @media screen and (max-width: 400px){
     div.add-icon {
