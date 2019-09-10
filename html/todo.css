@@ -1,10 +1,12 @@
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline macrocallblock
+
 \define custom-color(name, color)
 <$text text="""--$name$: """ /><<colour $color$>>
 \end
 
 /*
-  The macro is necessary because tiddlywiki will munge '--'
-  Trying to be clever with inserting a comment inside the '--' didn't work.
+  The \rules pragma allows '--' to be used without rendering as n-dash.
+  Custom properties will be accessed in the shadow-dom CSS as var(--custom-color-name)
 */
 
 to-do {

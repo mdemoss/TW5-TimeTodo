@@ -92,7 +92,7 @@ class todoElem extends HTMLElement {
 
         if(whenDone.add(expirationDuration).isBefore(rightNow)){
           this.root.querySelector("div.line-item").style.display = 'none';
-          clearInterval(this.intervalUpdateId); // is it ok to clear twice?
+          clearInterval(this.intervalUpdateId); // ok to clear twice ( https://stackoverflow.com/questions/51317692/can-i-call-clearinterval-on-the-same-id-twice )
           return;
         }
 
