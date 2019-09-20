@@ -71,8 +71,8 @@ class todoElem extends HTMLElement {
     // When adding new entries, the old elements are gone.
     // To "keep" focus, check to see if this was just added.
     if (
-      moment(this.getAttribute("added")).isSameOrAfter(moment().subtract(1, 's')) &&
-      this.parentElement.nodeName == 'TO-DO-LIST'
+      this.parentElement.nodeName == 'TO-DO-LIST' &&
+      moment(this.getAttribute("added")).isSameOrAfter(moment().subtract(1, 's'))
     ){
       this.parentElement.focus();
     }
