@@ -19,6 +19,7 @@ if(typeof HTMLElement !== 'undefined'){ // skip this and maybe use x-tag later
 class todoList extends HTMLElement {
   constructor() {
     super();
+    this.expiredItemCount = 0;
     this.root = this.attachShadow({ mode: 'open' }); // create a Shadow DOM
 
     // https://stackoverflow.com/questions/48498581/textcontent-empty-in-connectedcallback-of-a-custom-htmlelement
@@ -53,6 +54,8 @@ class todoList extends HTMLElement {
     inputLine.addEventListener("focus", ev=> formElement.classList.add("js-focus") );
     inputLine.addEventListener("blur", ev=> formElement.classList.remove("js-focus"));
     addIcon.addEventListener("click", ev=> inputLine.focus());
+
+    console.log("set content of list");
   }
 
   focus(){

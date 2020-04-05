@@ -24,4 +24,8 @@ to-do {
 to-do-list {
   <<custom-color new-item-color-focus foreground>>;
   <<custom-color new-item-color-blur muted-foreground>>;
+
+  <<custom-color remove-button-background-color sidebar-tab-background-selected>>;
+  <<custom-color remove-button-border-color sidebar-tab-background>>;
+  <<custom-color remove-button-foreground-color foreground>>;
 }

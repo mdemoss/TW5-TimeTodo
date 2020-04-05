@@ -31,6 +31,20 @@
       font-size: 16px; /* https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone */
     }
   }
+  button.expired-remove {
+    border-radius: 3px;
+    background-color: var(--remove-button-background-color);
+    border: 1px solid var(--remove-button-border-color);
+    color: var(--remove-button-foreground-color);
+    margin-right:1em;
+  }
+  div.expired-items {
+    text-align: right;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+    margin: 0.3em;
+    width: 100%;
+  }
 </style>
 
 <form class="new-entry-container">
@@ -40,4 +54,8 @@
 
 <div class="todo-list-container">
   <slot></slot>
+</div>
+
+<div class="expired-items">
+  {{=this.expiredItemCount}} expired completed items. <button class="expired-remove">❌Remove</button>
 </div>
