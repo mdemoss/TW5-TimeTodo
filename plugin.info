@@ -2,7 +2,7 @@
     "title": "$:/plugins/mdemoss/TimeTodo",
     "description": "To-Do List with periodically recurring tasks",
     "author": "Matt DeMoss",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "core-version": ">=5.0.8",
     "source": "https://github.com/mdemoss/TW5-TimeTodo",
     "plugin-type": "plugin"
