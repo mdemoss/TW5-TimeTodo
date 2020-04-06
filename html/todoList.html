@@ -57,6 +57,6 @@
   <slot></slot>
 </div>
 
-<div class="expired-items">
+<div class="expired-items" {{=this.hasAttribute("expires") ? '' : 'hidden'}}>
   {{=this.expiredItemCount}} expired completed items. <button class="expired-remove">Remove</button>
 </div>
