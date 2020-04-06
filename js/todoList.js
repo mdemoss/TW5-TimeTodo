@@ -48,18 +48,24 @@ class todoList extends HTMLElement {
     let formElement = this.root.querySelector("form.new-entry-container");
     let inputLine = this.root.querySelector("input[type='text']");
     let addIcon = this.root.querySelector(".add-icon");
+    let removeExpiredButton = this.root.querySelector("button.expired-remove");
 
     formElement.addEventListener("submit", ev=> this.addItem(ev));
 
     inputLine.addEventListener("focus", ev=> formElement.classList.add("js-focus") );
     inputLine.addEventListener("blur", ev=> formElement.classList.remove("js-focus"));
     addIcon.addEventListener("click", ev=> inputLine.focus());
+    removeExpiredButton.addEventListener("click", ev=> this.removeExpiredItems());
 
     console.log("set content of list");
   }
 
   focus(){
     this.root.querySelector("input[type='text']").focus();
+  }
+
+  removeExpiredItems(ev){
+    [...this.querySelectorAll('to-do')].filter(e => e.expired == true).map(e => e.removeItem(ev));
   }
 
   addItem(ev){

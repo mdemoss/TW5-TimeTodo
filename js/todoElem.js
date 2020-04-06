@@ -25,6 +25,7 @@ class todoElem extends HTMLElement {
   constructor() {
     super();
     this.root = this.attachShadow({ mode: 'open' }); // create a Shadow DOM
+    this.expired = false;
 
     // https://stackoverflow.com/questions/48498581/textcontent-empty-in-connectedcallback-of-a-custom-htmlelement
     // "there is no lifecycle hook that does guarantee child element access in Custom Elements spec v1"
@@ -94,7 +95,8 @@ class todoElem extends HTMLElement {
           this.root.querySelector("div.line-item").style.display = 'none';
           clearInterval(this.intervalUpdateId); // ok to clear twice ( https://stackoverflow.com/questions/51317692/can-i-call-clearinterval-on-the-same-id-twice )
           this.parentElement.expiredItemCount += 1;
-          this.parentElement.setContent(); // recusive? whoops.
+          this.parentElement.setContent(); // TODO: improve performance. is there an idiomatic way to do this?
+          this.expired = true;
           return;
         }
 
