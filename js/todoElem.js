@@ -110,7 +110,8 @@ class todoElem extends HTMLElement {
 
   updateDoneStatus(ev){
     let oldTiddlerText = $tw.wiki.getTiddler(this.ourTiddlerTitle).fields.text;
-    let oldOuterHtml = this.outerHTML;
+    // Using the parent element outerHTML handles cases where different lists have identically-named items.
+    let oldOuterHtml = (this.parentElement ? this.parentElement.outerHTML : this.outerHTML);
 
     if( this.checkboxElement.checked ){
     	this.setAttribute("done", (moment().toISOString()));
@@ -121,7 +122,7 @@ class todoElem extends HTMLElement {
 
     $tw.wiki.setText(
       this.ourTiddlerTitle, "text", null,
-      oldTiddlerText.replace(oldOuterHtml, this.outerHTML)
+      oldTiddlerText.replace(oldOuterHtml, (this.parentElement ? this.parentElement.outerHTML : this.outerHTML))
     );
   }
 
