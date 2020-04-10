@@ -33,12 +33,12 @@ These keywords can be used:
 7. `mon, mth, mths, month, months` - will parse to months
 8. `y, yr, yrs, year, years` - will parse to years
 
-The `done` attribute ...
+The `done` attribute indicates when the task was most recently done. This can be is any string that moment.js can parse. When a task is marked as done by clicking, ISO 8601 strings are used.
 
-The `times-done` attribute ...
+The `times-done` attribute this attribute keeps track of how many times a recurring task has been done. Updated automatically when a task is marked as done by clicking.
 
-The `added` attribute ...
+The `added` attribute is for internal use when a `to-do` tag is used inside a `to-do-list`. It is used to help uniquely identify items and to check whether the to-do-list should have focus after a refresh.
 
 ### The `<to-do-list>` tag
 
-The `expires` attribute...
+The `expires` attribute specifies how long completed non-recurring tasks should be visible within the list. This is specified as a human-readable time string that [timestring](https://www.npmjs.com/package/timestring) can parse, same as the `recur` attribute of the `to-do` tag. When this tag is present, a count of the expired items and a button to remove them all at once will appear at the bottom of the list.
