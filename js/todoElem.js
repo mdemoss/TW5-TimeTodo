@@ -111,7 +111,8 @@ class todoElem extends HTMLElement {
   updateDoneStatus(ev){
     let oldTiddlerText = $tw.wiki.getTiddler(this.ourTiddlerTitle).fields.text;
     // Using the parent element outerHTML handles cases where different lists have identically-named items.
-    let oldOuterHtml = (this.parentElement ? this.parentElement.outerHTML : this.outerHTML);
+    // Check if the to-do item is contained in non-html markup before using the parent's outerHTML.
+    let oldOuterHtml = (this.parentElement && oldTiddlerText.includes(this.parentElement.outerHTML) ? this.parentElement.outerHTML : this.outerHTML);
 
     if( this.checkboxElement.checked ){
     	this.setAttribute("done", (moment().toISOString()));
