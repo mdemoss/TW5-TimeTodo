@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "dot": "^1.1.2",
+    "dot": "^1.1.3",
     "moment": "^2.24.0",
     "timestring": "^6.0.0"
   }
